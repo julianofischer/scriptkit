@@ -1,0 +1,8 @@
+#!/bin/bash
+#author: Juliano Fischer Naves
+#criar um script hw dentro de $HOME/bpl/bin, torna-o executável e executa-o
+#23 de fevereiro de 2014, funcionando
+
+echo echo Hello, World! > $HOME/bpl/bin/hw
+chmod +x $HOME/bpl/bin/hw
+source $HOME/bpl/bin/hw

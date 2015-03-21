@@ -1,0 +1,15 @@
+#!/bin/ash
+# Juliano Fischer Naves
+# createMessage numberOfMessages destinationDir sleepTime
+
+max="$1"
+dir="$2"
+sleepTime="$3"
+
+for i in $(seq 1 "$max")
+do
+    dd if=/dev/urandom of="$dir$i" bs=1024 count=1024
+    sleep "$sleepTime"
+done
+
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+#: Descrição: imprime Hello e o primeiro argumento da linha de comando
+
+printf "Hello, %s\n" "$1"

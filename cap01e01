@@ -1,0 +1,9 @@
+#!/bin/bash
+#author: Juliano Fischer Naves
+#cria um diretório bpl dentro de $HOME
+#cria diretórios bin e script dentro de bpl
+#23 de Fevereiro de 2014 - funcionando
+
+mkdir $HOME/bpl
+mkdir $HOME/bpl/bin
+mkdir $HOME/bpl/scripts

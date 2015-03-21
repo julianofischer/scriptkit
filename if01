@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while true;
+do
+    read n
+    printf "%s%d\n" "O número digitado foi:" $n
+    
+    if (($n <= 10)); then
+        printf "%s\n" "Tente um número maior"
+    elif (($n > 20)); then
+        printf "%s\n" "Tente um número menor"
+    else
+        printf "%s:%d\n" "Você acertou" $n
+        break
+    fi
+done

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for i in {1..10}
+do
+    route add 192.168.1.1 wlan0
+    route add default gw 192.168.1.1 dev wlan0
+    sleep 5
+    route del 192.168.1.1 wlan0
+    route del default gw 192.168.1.1 dev wlan0
+    sleep 30
+done
+echo "Fim da execução"

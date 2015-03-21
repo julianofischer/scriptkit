@@ -1,0 +1,11 @@
+#/bin/bash
+
+
+for i in {1..16}
+do
+    #dd if=/dev/urandom of="/home/juliano/Documentos/BashScripts/outbox/$i" bs=1024 count=1024
+    yes 1234567 | head -131072 > /home/juliano/Documentos/BashScripts/dtnoutbox/$i
+    sleep 15
+done
+
+ 

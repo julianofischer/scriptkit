@@ -1,0 +1,11 @@
+#!/bin/bash
+
+n=1
+
+while [ $n -le 10] || [ $n -gt 30];
+do 
+    echo "$n"
+    #(( n++ ))
+    #n = $[$n + 1]
+    let n=n+1
+done

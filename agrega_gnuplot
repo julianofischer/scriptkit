@@ -1,0 +1,15 @@
+#!/bin/bash
+for i in *.agregado; 
+do 
+ic.awk -v ic=95 -v nrvar=1 $i > "${i}.gnuplot" ; 
+done
+if [ ! -d gnuplot ]; then
+    mkdir gnuplot
+fi
+mv *.gnuplot gnuplot/
+
+if [ ! -d agregados ]; then
+mkdir agregados
+fi
+mv *.agregado agregados/
+
