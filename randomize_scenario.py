@@ -82,9 +82,9 @@ def generate(lines,turn):
     
     new_filename = filename + "_" + str(turn)
     
-    assert len(l) == len(new_lines), "New file has different size" 
+    assert len(l) == len(new_lines), "the new file has different size" 
     
-    #write the new file
+    #write the new filee
     with open(new_filename,'w') as f:
         f.writelines(new_lines)  
                 
