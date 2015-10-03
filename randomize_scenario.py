@@ -31,12 +31,17 @@ first_node = args[0].first'''
 parser.add_argument("numberOfNodes",help="The total of nodes",type=check_negative)
 parser.add_argument("filename",help="The target file")
 parser.add_argument("numberOfRuns",help="Number of runs (and outputs)",type=check_negative, default=1)
+parser.add_argument("--remove-last",help="Number of nodes to remove beginning from the greater ID",type=int,
+                    required=False,nargs='?')
 args = parser.parse_args()
+print args
+#exit(0)
 
 number_of_nodes = args.numberOfNodes
 file_name = args.filename
 #last_node = args.last
 number_of_runs = args.numberOfRuns
+remove_last = args.remove_last
 
 def generate(lines,turn):
     #mapping the old id with the new id
@@ -84,18 +89,47 @@ def generate(lines,turn):
         new_lines.append(new_line)
         #print "old line: %s" % (','.join(l))
         #print "new line: %s" % (','.join(new_line))
-    
-    new_filename = file_name + "_" + str(turn)
+
     
     assert len(lines) == len(new_lines), "New file has different size [ %d != %d ]" % (len(lines),len(new_lines)) 
-    
+
+    removed = ''
+    #if remove_last is set
+    if (remove_last):
+        new_lines = remove_last_nodes(new_lines, remove_last)
+        removed = "removed_"+str(remove_last)
+    else:
+        removed = "removed_0"
+
+    new_filename = [file_name, removed, str(turn)]
+    new_filename = "_".join(new_filename)
+
     #write the new file
     with open(new_filename,'w') as f:
         for l in new_lines:
             l = [str(x) for x in l]
             l = " ".join(l)
             f.write(l+"\n")
-                
+
+
+def remove_last_nodes(new_lines, nrof_nodes):
+    assert nrof_nodes > 0, "Number of nodes to remove is less or equal 0"
+
+    #(62 - 5) = 57 nodes (0 to 56)
+    last_node = (number_of_nodes - nrof_nodes) - 1
+    return_list = []
+    for l in new_lines:
+        from_node = int(l[2])
+        to_node = int(l[3])
+
+        if from_node <= last_node and to_node <= last_node:
+            return_list.append(l)
+
+    assert len(return_list) < len(new_lines), "Generated line is greater or equal than target list"
+    print len(return_list)
+    return return_list
+
+
 def main():
         
     lines = []
