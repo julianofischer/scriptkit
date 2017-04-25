@@ -1,0 +1,5 @@
+#ganho relativo
+paste wave waveack | gawk '{print $1, (100*$5/$2) - 100}'
+
+#ganho absoluto
+paste wave waveack | gawk '{print $1, $5-$2 - 100}'
